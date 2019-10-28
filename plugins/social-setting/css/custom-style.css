@@ -1,0 +1,27 @@
+#tbsform {
+    height: auto;
+    border-radius: 10px;
+    width: 80%;
+    padding-left: 60px;
+    margin: 2% auto;
+}
+#tbsform input{
+    margin-right: 15px;
+    padding: 15px;
+    width: 90%;
+    height: 40px;
+    box-sizing: border-box;
+    /* padding-bottom: 46px; */
+}
+.tbs-btn-ind{   
+    margin-top: 20px;
+    background: #00a0d2;
+    padding: 10px;
+    cursor: pointer;
+    color: #ffffff;
+    width: 50% !important;
+}
+.margn{
+    margin-top: 30px;
+    padding-top: 10px;
+}

@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+.steps {
+	background-color: #fff;
+  width: 60%;
+  margin: 50px auto;
+  position: relative;
+}
+
+.steps fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 3px;
+  box-shadow: 0 17px 41px -21px rgb(0, 0, 0);
+  padding: 20px 30px;
+  border-top: 9px solid #69bc6e;
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 10%;
+  position: relative;
+}
+
+.steps fieldset:not(:first-of-type) {
+  display: none;
+}
+
+.steps label{
+  color: #333333;
+  text-align: left !important;
+  font-size: 15px;
+  font-weight: 200;
+  padding-bottom: 7px;
+  padding-top: 12px;
+  display: inline-block;
+}
+
+.steps input, .steps textarea {
+  outline: none;
+  display: block;
+  width: 100%;
+  margin: 0 0 20px;
+  padding: 10px 15px;
+  border: 1px solid #d9d9d9;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #837E7E;
+  font-family: "Roboto";
+  -webkti-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-wieght: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition: all 0.3s linear 0s;
+  -moz-transition: all 0.3s linear 0s;
+  -ms-transition: all 0.3s linear 0s;
+  -o-transition: all 0.3s linear 0s;
+  transition: all 0.3s linear 0s;
+}
+
+.steps input:focus, .steps textarea:focus{
+  color: #333333;
+  border: 1px solid #69bc6e;
+}
+
+.error1{
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-moz-box-shadow: 0 0 0 transparent;
+	-webkit-box-shadow: 0 0 0 transparent;
+	box-shadow: 0 0 0 transparent;
+	position: relative;
+    left: 300px;
+    width: 177px;
+	margin-top: -58px;
+	padding: 0 10px;
+	height: 39px;
+	display: block;
+	color: #ffffff;
+	background: #69bc6e;
+	border: 0;
+	font: 14px Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+	line-height: 39px;
+	white-space: nowrap;
+}
+
+.error1:before{
+  width: 0;
+  height: 0;
+  left: -8px;
+  top: 14px;
+  content: '';
+  position: absolute;
+  border-top: 6px solid transparent;
+  border-right: 8px solid #69bc6e;
+  border-bottom: 6px solid transparent;
+}
+
+.error-log{
+  margin: 5px 5px 5px 0;
+  font-size: 19px;
+  position: relative;
+  bottom: -2px;
+}
+
+.question-log {
+  margin: 5px 1px 5px 0;
+  font-size: 15px;
+  position: relative;
+  bottom: -2px;
+  }
+
+.steps .action-button, .action-button {
+  width: 100px !important;
+  background: #69bc6e;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px auto;
+  -webkit-transition: all 0.3s linear 0s;
+  -moz-transition: all 0.3s linear 0s;
+  -ms-transition: all 0.3s linear 0s;
+  -o-transition: all 0.3s linear 0s;
+  transition: all 0.3s linear 0s;
+  display: block;
+}
+
+.steps .next, .steps .submit{
+	display: inline-block;
+}
+
+.steps .previous{
+	display: inline-block;
+}
+
+.steps .action-button:hover, .steps .action-button:focus, .action-button:hover, .action-button:focus {
+  background:#69bc6e;;
+}
+
+.steps .explanation{
+  display: block;
+  clear: both;
+  width: 540px;
+  background: #f2f2f2;
+  position: relative;
+  margin-left: -30px;
+  padding: 22px 0px;
+  margin-bottom: -10px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  top: 10px;
+  text-align: center;
+  color: #333333;
+  font-size: 12px;
+  font-weight: 200;
+  cursor:pointer;
+}
+
+#progressbar {
+  margin-bottom: 30px;
+  overflow: hidden;
+  counter-reset: step;
+  width:100%;
+  text-align: center;
+}
+#progressbar li {
+  list-style-type: none;
+  color: rgb(51, 51, 51);
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 30%;
+  float: left;
+  position: relative;
+}
+#progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 20px;
+  line-height: 20px;
+  display: block;
+  font-size: 10px;
+  color: #333;
+  background: #f5f5f5;
+  border-radius: 3px;
+  margin: 0 auto 5px auto;
+}
+
+#progressbar li:after {
+    content: '';
+    width: 94%;
+    height: 2px;
+    background: #f5f5f5;
+    position: absolute;
+    left: -47%;
+    top: 9px;
+}
+
+#progressbar li:first-child:after {
+  content: none; 
+}
+
+#progressbar li.active:before,  #progressbar li.active:after{
+  background: #69bc6e;
+  color: white;
+}
+
+@media (max-width:1000px){
+
+/*brings inputs down in size */
+.steps input, .steps textarea {
+  outline: none;
+  display: block;
+  width: 100% !important;
+  }
+
+.error1 {
+  left: 345px;
+  margin-top: -58px;
+}
+
+}
+
+
+@media (max-width:675px){
+/*mobile phone: uncollapse all fields: remove progress bar*/
+
+.steps {
+  width: 100%;
+  margin: 50px auto;
+  position: relative;
+}
+
+#progressbar{
+  display:none;
+}
+
+/*move error logs */
+.error1 {
+  position: relative;
+  left: 0 !important;
+  margin-top: 24px;
+  top: -11px;
+}
+
+.error1:before {
+  width: 0;
+  height: 0;
+  left: 14px;
+  top: -14px;
+  content: '';
+  position: absolute;
+  border-left: 6px solid transparent;
+  border-bottom: 8px solid #69bc6e;
+  border-right: 6px solid transparent;
+  }
+
+/*show hidden fieldsets */
+.steps fieldset:not(:first-of-type) {
+  display: block;
+}
+
+.steps fieldset{
+  position:relative;
+  width: 100%;
+  margin:0 auto;
+  margin-top: 45px;
+}
+
+.steps .next, .steps .previous{
+  display:none;
+}
+
+.steps .explanation{
+  display:none;
+}
+
+.steps .submit {
+  float: right;
+  margin: 28px auto 10px;
+  width: 100% !important;
+}
+
+}
+
+
+
+/* Info */
+.info {
+  width: 300px;
+  margin: 35px auto;
+  text-align: center;
+  font-family: 'roboto', sans-serif;
+}
+
+.info h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 28px;
+  font-weight: 400;
+  color: #333333;
+  padding-bottom: 5px;
+
+}
+.info span {
+  color:#666666;
+  font-size: 13px;
+  margin-top:20px;
+}
+.info span a {
+  color: #666666;
+  text-decoration: none;
+}
+.info span .fa {
+  color: rgb(226, 168, 16);
+  font-size: 19px;
+  position: relative;
+  left: -2px;
+}
+
+.info span .spoilers {
+  color: #999999;
+  margin-top: 5px;
+  font-size: 10px;
+}
+#rdi_id	{
+	display: inline-block;
+}
+
+.crt_sav	{
+	outline: none;
+    display: block;
+    width: 590px;
+    margin: 0 0 20px;
+    padding: 10px 15px;
+    border: 1px solid #d9d9d9;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #837E7E;
+    font-family: "Roboto";
+}	
+
+
+  </style>
+</head>
+<body>
+
+<form class="steps" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="">
+  <ul id="progressbar">
+    <li class="active">Contact Details</li>
+    <li>Legial Information</li>
+    <li>Account Details</li>
+  </ul>
+  <fieldset>
+    <!-- Begin What's Your First Name Field -->
+        <div >        
+          <label for=" ">Person</label>
+          <input id=" " name="firstname" required="required" type="name" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- End What's Your First Name Field -->
+
+     <!-- ------------------  Contact  ------------------------ -->
+        <div >        
+          <label for="">ED/CEO/COO Contact</label>
+          <input id="contat" name="contat" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+    <!-- ---------------------- Reserve Person ---------------------------- -->
+        <div >        
+          <label for=" ">Reserve Person</label>
+          <input id=" " name="res_per" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+    <!-- ---------------- Fund Raising Contact ----------------------- -->
+        <div >        
+          <label for=" ">Fund Raising Contact</label>
+          <input id=" " name="fund-raising" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+    <!-- ---------------- Accounts Contact  -------------------- -->
+        <div >        
+          <label for=" ">Accounts Contact</label>
+          <input id=" " name="acc_cont" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+    <!-- ------------------ Our Vision ---------------------- -->
+        <div >        
+          <label for=" ">Our Vision</label>
+          <textarea id=" " name="our_vis" required="required" type="textarea" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" ></textarea>
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+     <!-- ----------------- Our Mission ------------------------ -->
+        <div >        
+          <label for=" ">Our Mission</label>
+          <textarea id=" " name="our_mis" required="required" type="textarea" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" ></textarea>
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+    <!-- Begin What's Your Email Field -->
+       <!--  <div class="hs_email field hs-form-field">
+        
+          <label for="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">What's your E-mail Address? *</label>
+
+          <input id="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983" name="email" required="required" type="email" value="" placeholder="" data-rule-required="true" data-msg-required="Please enter a valid email address." >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div> -->
+    <!-- End What's Your Email Field -->
+
+    <!-- Begin Total Number of Constituents in Your Database Field -->
+        <!-- <div class="hs_email field hs-form-field hs_total_number_of_constituents_in_your_database">
+        
+          <label for="edit-submitted-constituent-base-total-constituents total_number_of_constituents_in_your_database-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">What's the Total Number of Constituents in your Database? *</label>
+
+          <input id="edit-submitted-constituent-base-total-constituents" class="form-text hs-input" name="total_number_of_constituents_in_your_database" required="required" size="60" maxlength="128" type="number" value="" placeholder="" data-rule-required="true" data-msg-required="Please enter a valid number" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div> -->
+
+    <!-- End Total Number of Constituents in Your Database Field -->
+    <input type="button" data-page="1" name="next" class="next action-button" value="Next" />
+  </fieldset>
+  <!-- ---------- LEGIAL INFORMATION ------------ -->  
+  <fieldset>
+    <!-- ----------------- Trust ------------------- -->
+      <div >        
+          <label for=" ">Trust</label>
+          <input id=" " name="user_trust" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- End What's Your First Name Field -->
+
+     <!-- ---------------------  Society  ---------------------- -->
+        <div >        
+          <label for=" ">Society</label>
+          <input id=" " name="user_siciety" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+
+    <!-- -------------------- Section 8 ------------------ -->
+        <div >        
+          <label for=" ">Section 8</label>
+          <input id=" " name="res_per" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+
+    <!-- -------------------- PAN Number ----------------- -->
+        <div >        
+          <label for=" ">PAN Number</label>
+          <input id=" " name="pan_numb" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+    <!-- ------------------ TAN Number ----------------- -->
+        <div >        
+          <label for=" ">TAN Number</label>
+          <input id=" " name="tan_numb" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+    <!-- ------------------ About Organization ---------------- -->
+        <div >        
+          <label for=" ">About Organization</label>
+          <textarea id=" " name="abut_org" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" ></textarea>
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+    <input type="button" data-page="2" name="previous" class="previous action-button" value="Previous" />
+    <input type="button" data-page="2" name="next" class="next action-button" value="Next" />
+  </fieldset>
+  <!-- --------------- End ------------------- -->
+  <!-- ACCOUNT DETAILS -->  
+  <fieldset>
+      <!-- ---------------- Donation ------------------- -->
+		<div>
+			<div style="display: inline-block;">
+				<label for="" >Donation</label><br>
+				<hr>
+				<div id="rdi_id">
+					<div class="radio" id="rdi_id" style="width: 100px;">
+						<label>
+							<input type="radio" name="hosting" value="society" /> NON FCRA 
+						</label>
+					</div>
+					<div class="radio" id="rdi_id">
+						<label>
+							<input type="radio" name="hosting" value="trust" /> FCRA Account
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- --------------- End ------------------- -->			
+			
+		<!-- ---------------- Bank Name ------------------- -->
+       <div >        
+          <label for=" ">Bank Name</label>
+          <input id=" " name="bank_name" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- -------------End ------------ -->
+    <!-- ---------------- Bank Branch Address ------------------- -->
+       <div >        
+          <label for=" ">Bank Branch Address</label>
+          <input id=" " name="bank_branch" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- End What's Your First Name Field -->
+
+     <!-- -------------------Account Number---------------------- -->
+        <div >        
+          <label for=" ">Account Number</label>
+          <input id=" " name="act_numb" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+
+    <!-- -----------------Name of Account---------------- -->
+        <div >        
+          <label for=" ">Name of Account</label>
+          <input id=" " name="name_acct" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+    <!-- ------------------MICR number--------------------- -->
+        <div >        
+          <label for=" ">9 digit MICR number</label>
+          <input id=" " name="micr_nmb" required="required" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+    <!-- ---------------------------Current/Savings account----------------------- -->
+			<div style="display: inline-block;">
+				<label for="" >Account Current/ Saving</label>
+				<select type="select" class="crt_sav">
+					<option value=" " >Select Account type</option>
+					<option>Current Account</option>
+					<option>Saving Account</option>      
+				</select>
+			</div>
+		</div>
+    <!-- --------------- End ------------------- -->    
+    <!-- ------------------SWIFT Code----------------------- -->
+        <div >        
+          <label for=" ">SWIFT Code</label>
+          <input id=" " name="swift_code" required="required" type="textarea" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+    <!-- -----------------IFSC CODE-------------------- -->
+        <div >        
+          <label for=" ">IFSC CODE</label>
+          <input id=" " name="ifsc_code" required="required" type="textarea" value="" placeholder="" data-rule-required="true" data-msg-required="Please include your first name" >
+          <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+          </span>
+        </div>
+    <!-- --------------- End ------------------- -->
+    <input type="button" data-page="5" name="previous" class="previous action-button" value="Previous" />
+    <input id="submit" class="hs-button primary large action-button next" type="submit" value="Submit">
+  </fieldset>
+</form>
+    <footer>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+      <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
+      <script>
+
+$(document).ready(function()  {
+  var current_fs,next_fs,previous_fs;var left,opacity,scale;
+  var animating;$(".steps").validate( {
+    errorClass:'invalid',errorElement:'span',errorPlacement:function(error,element) {
+      error.insertAfter(element.next('span').children());},
+      highlight:function(element){$(element).next('span').show();},unhighlight:function(element){$(element).next('span').hide();}});$(".next").click(function(){$(".steps").validate({errorClass:'invalid',errorElement:'span',errorPlacement:function(error,element){error.insertAfter(element.next('span').children());},highlight:function(element){$(element).next('span').show();},unhighlight:function(element){$(element).next('span').hide();}});if((!$('.steps').valid())){return true;}
+if(animating)return false;animating=true;current_fs=$(this).parent();next_fs=$(this).parent().next();$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");next_fs.show();current_fs.animate({opacity:0},{step:function(now,mx){scale=1-(1-now)*0.2;left=(now*50)+"%";opacity=1-now;current_fs.css({'transform':'scale('+scale+')'});next_fs.css({'left':left,'opacity':opacity});},duration:800,complete:function(){current_fs.hide();animating=false;},easing:'easeInOutExpo'});});$(".submit").click(function(){$(".steps").validate({errorClass:'invalid',errorElement:'span',errorPlacement:function(error,element){error.insertAfter(element.next('span').children());},highlight:function(element){$(element).next('span').show();},unhighlight:function(element){$(element).next('span').hide();}});if((!$('.steps').valid())){return false;}
+if(animating)return false;animating=true;current_fs=$(this).parent();next_fs=$(this).parent().next();$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");next_fs.show();current_fs.animate({opacity:0},{step:function(now,mx){scale=1-(1-now)*0.2;left=(now*50)+"%";opacity=1-now;current_fs.css({'transform':'scale('+scale+')'});next_fs.css({'left':left,'opacity':opacity});},duration:800,complete:function(){current_fs.hide();animating=false;},easing:'easeInOutExpo'});});$(".previous").click(function(){if(animating)return false;animating=true;current_fs=$(this).parent();previous_fs=$(this).parent().prev();$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");previous_fs.show();current_fs.animate({opacity:0},{step:function(now,mx){scale=0.8+(1-now)*0.2;left=((1-now)*50)+"%";opacity=1-now;current_fs.css({'left':left});previous_fs.css({'transform':'scale('+scale+')','opacity':opacity});},duration:800,complete:function(){current_fs.hide();animating=false;},easing:'easeInOutExpo'});});});jQuery(document).ready(function(){jQuery("#edit-submitted-acquisition-amount-1,#edit-submitted-acquisition-amount-2,#edit-submitted-cultivation-amount-1,#edit-submitted-cultivation-amount-2,#edit-submitted-cultivation-amount-3,#edit-submitted-cultivation-amount-4,#edit-submitted-retention-amount-1,#edit-submitted-retention-amount-2,#edit-submitted-constituent-base-total-constituents").keyup(function(){calcTotal();});});function calcTotal(){var grade=0;var donorTotal=Number(jQuery("#edit-submitted-constituent-base-total-constituents").val().replace(/,/g,""));if(donorTotal)
+{donorTotal=parseFloat(donorTotal);}
+else
+{donorTotal=0;}
+grade+=getBonusDonorPoints(donorTotal);var acqAmount1=Number(jQuery("#edit-submitted-acquisition-amount-1").val().replace(/,/g,""));var acqAmount2=Number(jQuery("#edit-submitted-acquisition-amount-2").val().replace(/,/g,""));var acqTotal=0;if(acqAmount1){acqAmount1=parseFloat(acqAmount1);}else{acqAmount1=0;}
+if(acqAmount2){acqAmount2=parseFloat(acqAmount2);}else{acqAmount2=0;}
+if(acqAmount1>0&&acqAmount2>0){acqTotal=((acqAmount2-acqAmount1)/ acqAmount1*100).toFixed(2);}else{acqTotal=0;}
+jQuery("#edit-submitted-acquisition-percent-change").val(acqTotal+'%');grade+=getAcquisitionPoints(acqTotal);console.log(grade);var cultAmount1=Number(jQuery("#edit-submitted-cultivation-amount-1").val().replace(/,/g,""));var cultAmount2=Number(jQuery("#edit-submitted-cultivation-amount-2").val().replace(/,/g,""));var cultTotal=0;if(cultAmount1){cultAmount1=parseFloat(cultAmount1);}else{cultAmount1=0;}
+if(cultAmount2){cultAmount2=parseFloat(cultAmount2);}else{cultAmount2=0;}
+if(cultAmount1>0&&cultAmount2>0){cultTotal=((cultAmount2-cultAmount1)/ cultAmount1*100).toFixed(2);}else{cultTotal=0;}
+jQuery("#edit-submitted-cultivation-percent-change1").val(cultTotal+'%');grade+=getAcquisitionPoints(cultTotal);var cultAmount3=Number(jQuery("#edit-submitted-cultivation-amount-3").val().replace(/,/g,""));var cultAmount4=Number(jQuery("#edit-submitted-cultivation-amount-4").val().replace(/,/g,""));if(cultAmount3){cultAmount3=parseFloat(cultAmount3);}else{cultAmount3=0;}
+if(cultAmount4){cultAmount4=parseFloat(cultAmount4);}else{cultAmount4=0;}
+if(cultAmount3>0&&cultAmount4>0){cultTotal2=((cultAmount4-cultAmount3)/ cultAmount3*100).toFixed(2);}else{cultTotal2=0;}
+jQuery("#edit-submitted-cultivation-percent-change2").val(cultTotal2+'%');grade+=getAcquisitionPoints(cultTotal2);var retAmount1=Number(jQuery("#edit-submitted-retention-amount-1").val().replace(/,/g,""));var retAmount2=Number(jQuery("#edit-submitted-retention-amount-2").val().replace(/,/g,""));var retTotal=0;if(retAmount1){retAmount1=parseFloat(retAmount1);}else{retAmount1=0;}
+if(retAmount2){retAmount2=parseFloat(retAmount2);}else{retAmount2=0;}
+if(retAmount1>0&&retAmount2>0){retTotal=(retAmount2 / retAmount1*100).toFixed(2);}else{retTotal=0;}
+jQuery("#edit-submitted-retention-percent-change").val(retTotal+'%');grade+=getAcquisitionPoints(retTotal);jQuery("#edit-submitted-final-grade-grade").val(grade+' / 400');}
+function getAcquisitionPoints(val)
+{if(val<1)
+{return 0;}
+else if(val>=1&&val<6)
+{return 50;}
+else if(val>=6&&val<11)
+{return 60;}
+else if(val>=11&&val<16)
+{return 70;}
+else if(val>=16&&val<21)
+{return 75;}
+else if(val>=21&&val<26)
+{return 80;}
+else if(val>=26&&val<31)
+{return 85;}
+else if(val>=31&&val<36)
+{return 90;}
+else if(val>=36&&val<41)
+{return 95;}
+else if(val>=41)
+{return 100;}}
+function getCultivationGiftPoints(val)
+{if(val<1)
+{return 0;}
+else if(val>=1&&val<4)
+{return 50;}
+else if(val>=4&&val<7)
+{return 60;}
+else if(val>=7&&val<10)
+{return 70;}
+else if(val>=10&&val<13)
+{return 75;}
+else if(val>=13&&val<16)
+{return 80;}
+else if(val>=16&&val<21)
+{return 85;}
+else if(val>=21&&val<26)
+{return 90;}
+else if(val>=26&&val<51)
+{return 95;}
+else if(val>=51)
+{return 100;}}
+function getCultivationDonationPoints(val)
+{if(val<1)
+{return 0;}
+else if(val>=1&&val<6)
+{return 50;}
+else if(val>=6&&val<11)
+{return 60;}
+else if(val>=11&&val<16)
+{return 70;}
+else if(val>=16&&val<21)
+{return 75;}
+else if(val>=21&&val<26)
+{return 80;}
+else if(val>=26&&val<31)
+{return 85;}
+else if(val>=31&&val<36)
+{return 90;}
+else if(val>=36&&val<41)
+{return 95;}
+else if(val>=41)
+{return 100;}}
+function getRetentionPoints(val)
+{if(val<1)
+{return 0;}
+else if(val>=1&&val<51)
+{return 50;}
+else if(val>=51&&val<56)
+{return 60;}
+else if(val>=56&&val<61)
+{return 70;}
+else if(val>=61&&val<66)
+{return 75;}
+else if(val>=66&&val<71)
+{return 80;}
+else if(val>=71&&val<76)
+{return 85;}
+else if(val>=76&&val<81)
+{return 90;}
+else if(val>=81&&val<91)
+{return 95;}
+else if(val>=91)
+{return 100;}}
+function getBonusDonorPoints(val)
+{if(val<10001)
+{return 0;}
+else if(val>=10001&&val<25001)
+{return 10;}
+else if(val>=25001&&val<50000)
+{return 15;}
+else if(val>=50000)
+{return 20;}}
+      </script>
+    </footer>
+</body>
+</html>

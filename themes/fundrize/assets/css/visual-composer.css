@@ -1,0 +1,34 @@
+/* Visual Composer tweaks & fixes
+-------------------------------------------------------------- */
+/* Remove top padding on row has color background */
+.vc_col-has-fill>.vc_column-inner,
+.vc_row-has-fill+.vc_row-full-width+.vc_row>.vc_column_container>.vc_column-inner,
+.vc_row-has-fill+.vc_row>.vc_column_container>.vc_column-inner,
+.vc_row-has-fill+.vc_vc_row>.vc_row>.vc_vc_column>.vc_column_container>.vc_column-inner,
+.vc_row-has-fill+.vc_vc_row_inner>.vc_row>.vc_vc_column_inner>.vc_column_container>.vc_column-inner,
+.vc_row-has-fill>.vc_column_container>.vc_column-inner,
+.vc_row-has-fill>.vc_row>.vc_vc_column>.vc_column_container>.vc_column-inner,
+.vc_row-has-fill>.vc_vc_column_inner>.vc_column_container>.vc_column-inner { padding-top: 0 !important; }
+
+/* Remove default vc margins - IMPORTANT So users can select their own margins in the composer */
+.wpb_row,
+.wpb_content_element,
+ul.wpb_thumbnails-fluid > li,
+.last_toggle_el_margin,
+.wpb_button { margin-bottom: 0 }
+
+/* Don't allow max-width classes on this element */
+.wpb_row { max-width: none }
+
+/* Stretch row content fix */
+.stretch_row_content .vc_col-sm-12 { padding-left: 0; padding-right: 0; }
+
+/* Rows without margins */
+.no-margins { margin: 0 !important }
+.no-margins .vc_column-inner { padding-left: 0 !important; padding-right: 0 !important; }
+.row-no-spacing .wpb_column { padding: 0 !important }
+
+/* Single image fixes */
+.wpb_single_image .vc_single_image-wrapper { overflow: hidden; }
+.wpb_single_image a { display: block; display: inline-block; max-width: 100%; /*required for firefox bug*/ }
+.vc_single_image-wrapper { position: relative; }

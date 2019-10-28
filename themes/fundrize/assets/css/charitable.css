@@ -1,0 +1,54 @@
+
+#charitable-donation-login-form,
+#charitable-donation-form { font-family: "Montserrat", sans-serif; }
+#charitable-donation-form .donation-amounts .donation-amount > label { padding: 0; }
+
+#charitable-donation-login-form .button,
+.charitable-submit-field .button { line-height: 50px; padding: 0 46px; background-color: #292929; }
+
+#charitable-donation-login-form .button:hover,
+.charitable-submit-field .button:hover { opacity: 0.7; }
+
+.campaign .login-prompt { font-size: 16px; font-family: "Montserrat", sans-serif; padding: 8px 32px; background-color: #fbf0c8; box-shadow: 5px 5px 0px 0px #f1f1f1; margin: 0 0 22px 0; list-style: none; }
+.campaign .login-prompt > a { position: relative; display: inline-block; padding-left: 24px; }
+.campaign .login-prompt > a:before { color: #777; font-size: 11px; content: "\e912"; font-family: "infinitum"; position: absolute; left: 0; top: 5px; }
+
+.donation-amount.custom-donation-amount input:focus::-moz-placeholder,
+.donation-amount.custom-donation-amount.selected input::-moz-placeholder { color: #fff; opacity: 1; }
+.donation-amount.custom-donation-amount input:focus:-ms-input-placeholder,
+.donation-amount.custom-donation-amount.selected input:-ms-input-placeholder { color: #fff; opacity: 1; }
+.donation-amount.custom-donation-amount input:focus::-webkit-input-placeholder,
+.donation-amount.custom-donation-amount.selected input::-webkit-input-placeholder { color: #fff; opacity: 1; }
+
+.charitable-form-header,
+.charitable-form-header h4 { font-size: 22px; color: #292929; font-weight: 400; }
+
+#charitable-donation-form .donation-amounts .donation-amount .custom-donation-amount-wrapper { padding: 0; }
+#charitable-donation-form .donation-amounts .donation-amount.selected { background: transparent; }
+#charitable-donation-form .donation-amounts .donation-amount.custom-donation-amount.selected input,
+#charitable-donation-form .donation-amounts .donation-amount.suggested-donation-amount.selected .amount { background-color: #f57223; }
+
+#charitable-donor-fields .charitable-form-fields .charitable-form-field.odd { width: 48%; float: left; margin-bottom: 15px; }
+#charitable-donor-fields .charitable-form-fields .charitable-form-field.even { width: 48%; float: right; margin-bottom: 15px; }
+
+.charitable-form-fields #charitable_field_country_element { height: 48px; }
+#charitable-donation-form .donation-amounts .donation-amount.suggested-donation-amount .amount { text-align: center; background-color: #fff; display: block; margin: 0; padding: 0 30px; height: 100px; line-height: 100px; font-size: 18px; }
+.charitable-login-form .login-submit { width: 100%; display: inline-block; }
+.campaign-entry-content p.login-remember { width: 100%; float: left; display: inline-block; }
+.campaign-entry-content p.login-remember #rememberme { float: left; width: auto; margin-right: 10px; }
+.charitable-form-fields .charitable-fieldset { padding: 0; margin-bottom: 20px; border: 0; }
+.charitable-form-fields #charitable-donor-fields { padding-top: 40px; padding-bottom: 30px; margin-bottom: 30px; border-top: 1px dotted #c4c4c4; border-bottom: 1px dotted #c4c4c4; }
+.charitable-form-fields .charitable-fieldset-field-wrapper .charitable-fieldset-field-header { margin-bottom: 15px; font-weight: 400; }
+.charitable-form-header, .charitable-form-header h4 { font-size: 24px; font-weight: 700; }
+
+#charitable-donation-form .donation-amounts { width: 100%; margin: 0; display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; -webkit-align-items: center; align-items: center; -webkit-justify-content: flex-start; justify-content: flex-start; }
+#charitable-donation-form .donation-amounts .donation-amount { float: none; width: auto; display: inline-block; vertical-align: middle; border: 0; padding: 0 20px 0 0; margin: 0 0 1em; }
+#charitable-donation-form .donation-amounts .donation-amount.custom-donation-amount input { height: 100px; line-height: 100px; padding: 0 20px; margin: 0 0 0 10px; font-size: 16px; font-weight: 700; }
+#charitable-donation-form .donation-amounts .donation-amount.custom-donation-amount input:focus,
+#charitable-donation-form .donation-amounts .donation-amount.custom-donation-amount.selected input { color: #fff; }
+
+#charitable-gateway-fields .charitable-radio-list li { color: #292929; }
+#charitable-gateway-fields .charitable-radio-list input[type=radio] { display: inline-block; }
+.charitable-form-processing { text-align: center; }
+
+.widget.widget_charitable_campaigns_widget .campaign .campaign-title { font-weight: 400; color: #292929; font-size: 16px; }
