@@ -4979,20 +4979,20 @@ $user_last_name = get_user_meta(  $usid, 'user_last_name', true );
 $userName=$user_pre_name." ".$user_last_name;
    $ngo_user_temp_pass = get_user_meta( $usid, 'vikkip', true );
 
-global $wpdb;
-$wpdb->update(
-	'wp_ngo_profile',
-	array(
-		'ngo_done' =>3,	// string
-		'ngo_resubmit_at' =>date('Y-m-d'),
-		're_submit_info' =>$msg_data	// string
+// global $wpdb;
+// $wpdb->update(
+// 	'wp_ngo_profile',
+// 	array(
+// 		'ngo_done' =>3,	// string
+// 		'ngo_resubmit_at' =>date('Y-m-d'),
+// 		're_submit_info' =>$msg_data	// string
 
 
-	),
-	array( 'nguser_id' => $txtUserID ),
+// 	),
+// 	array( 'nguser_id' => $txtUserID ),
 
 
-);
+// );
 
 
 
